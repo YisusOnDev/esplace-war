@@ -15,17 +15,7 @@
 // @grant        GM_addStyle
 // @grant GM.xmlHttpRequest
 // @connect reddit.com
-// ==/UserScript==
-
-const ORDERS_URL = 'https://raw.githubusercontent.com/YisusOnDev/esplace-war/main/orders.json'
-
-const ORDER_UPDATE_DELAY = 4 * 60 * 1000
-const TOAST_DURATION = 10 * 1000
-const MAP_ERROR_RETRY_DELAY = 6 * 1000
-const PARSE_ERROR_REFRESH_DELAY = 10 * 1000
-const AFTER_PAINT_DELAY = 5.25 * 60 * 1000
-const CHECK_AGAIN_DELAY = 30 * 1000
-const REFRESH_TOKEN_DELAY = 30 * 60 * 1000
+// ==/UserScript===
 
 const COLOR_TO_INDEX = {
 	'#6D001A': 0,
