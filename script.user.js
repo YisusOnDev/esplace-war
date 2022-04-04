@@ -285,7 +285,7 @@ function getCanvasIndex(x, y) {
 
 async function getCurrentImageUrl(tag) {
 	return new Promise((resolve, reject) => {
-		const ws = new WebSocket('wss://gql-realtime-2.reddit.com/query', 'graphql-ws');
+		const ws = new WebSocket('wss://graphql-realtime-2.reddit.com/query', 'graphql-ws');
 
 		ws.onopen = () => {
 			ws.send(JSON.stringify({
