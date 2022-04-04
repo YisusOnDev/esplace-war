@@ -4,8 +4,7 @@
 // @version      16
 // @description  Script 
 // @author       ForsenPlace
-// @match        https://www.reddit.com/r/place/*
-// @match        https://new.reddit.com/r/place/*
+// @match        https://(www|news).reddit.com/r/place
 // @icon         https://cdn.frankerfacez.com/emoticon/545961/4
 // @require	     https://cdn.jsdelivr.net/npm/toastify-js
 // @resource     TOASTIFY_CSS https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css
