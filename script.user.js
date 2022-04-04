@@ -150,7 +150,7 @@ async function getAccessToken() {
 
 function updateOrders() {
 	fetch(ORDERS_URL).then(async (response) => {
-		if (!response.ok) return console.warn('Couldn\'t get orders (error response code)');
+		if (!response.ok) return console.warn('No se pueden conseguir las orders (error response code)');
 		const newOrders = await response.json();
 
 		if (JSON.stringify(newOrders) !== JSON.stringify(currentOrdersByPrio)) {
@@ -160,7 +160,7 @@ function updateOrders() {
 				duration: TOAST_DURATION
 			}).showToast();
 		}
-	}).catch((e) => console.warn('Couldn\'t get orders', e));
+	}).catch((e) => console.warn('No se pueden conseguir las orders', e));
 }
 
 async function executeOrders() {
@@ -171,9 +171,9 @@ async function executeOrders() {
 		ctx = await getCanvasFromUrl(await getCurrentImageUrl('2'), 0, 1000);
 		ctx = await getCanvasFromUrl(await getCurrentImageUrl('3'), 1000, 1000);
 	} catch (e) {
-		console.warn('Error obtaining map', e);
+		console.warn('Error al obtener el mapa', e);
 		Toastify({
-			text: `Couldn\'t get map. Trying again in ${MAP_ERROR_RETRY_DELAY / 1000} seconds...`,
+			text: `Error al obtener el mapa. Intentalo de nuevo en ${MAP_ERROR_RETRY_DELAY / 1000} segundos...`,
 			duration: MAP_ERROR_RETRY_DELAY
 		}).showToast();
 		setTimeout(executeOrders, MAP_ERROR_RETRY_DELAY);
@@ -195,7 +195,7 @@ async function executeOrders() {
 			if (currentColorId == colorId) continue;
 	
 			Toastify({
-				text: `Changing pixel on ${x}, ${y} with priority ${prioIndex + 1} from ${INDEX_TO_NAME[currentColorId]} to ${INDEX_TO_NAME[colorId]}`,
+				text: `Cambiando el pixel en ${x}, ${y} con prioridad ${prioIndex + 1} from ${INDEX_TO_NAME[currentColorId]} to ${INDEX_TO_NAME[colorId]}`,
 				duration: TOAST_DURATION
 			}).showToast();
 			const res = await place(x, y, colorId);
@@ -208,7 +208,7 @@ async function executeOrders() {
 					const nextPixelDate = new Date(nextPixel);
 					const delay = nextPixelDate.getTime() - Date.now();
 					Toastify({
-						text : `Too early to place pixel! Next pixel at ${ nextPixelDate.toLocaleTimeString()}`,
+						text : `Muy pronto para poner el pixel! Siguiente pixel en ${ nextPixelDate.toLocaleTimeString()}`,
 						duration: delay
 					}).showToast();
 					setTimeout(executeOrders, delay);
@@ -217,7 +217,7 @@ async function executeOrders() {
 					const nextPixelDate = new Date(nextPixel);
 					const delay = nextPixelDate.getTime() - Date.now();
 					Toastify({
-						text : `Pixel placed on ${x}, ${y}! Next pixel at ${nextPixelDate.toLocaleTimeString()}`,
+						text : `Pixel puesto en ${x}, ${y}! Siguiente pixel en ${nextPixelDate.toLocaleTimeString()}`,
 						duration: delay
 					}).showToast();
 					setTimeout(executeOrders, delay);
@@ -226,7 +226,7 @@ async function executeOrders() {
 				// The token probably expired, refresh and hope for the best
 				console.warn ('Error parsing response', e);
 				Toastify({
-					text : `Error parsing response after placing pixel. Refreshing the page in ${PARSE_ERROR_REFRESH_DELAY / 1000} seconds...`,
+					text : `Error al analizar la respuesta después de colocar el píxel. Recargando la pagina en ${PARSE_ERROR_REFRESH_DELAY / 1000} segundos...`,
 					duration: PARSE_ERROR_REFRESH_DELAY
 				}).showToast();
 				setTimeout(() => {
@@ -239,7 +239,7 @@ async function executeOrders() {
 	}
 
 	Toastify({
-		text: `Every pixel is correct! checking again in ${CHECK_AGAIN_DELAY / 1000} seconds...`,
+		text: `Todos los pixeles son correctos! Volviendolo a compronar en ${CHECK_AGAIN_DELAY / 1000} segundos...`,
 		duration: CHECK_AGAIN_DELAY
 	}).showToast();
 	setTimeout(executeOrders, CHECK_AGAIN_DELAY);
