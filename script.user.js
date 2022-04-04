@@ -145,7 +145,7 @@ async function getAccessToken() {
     const response = await fetch(url);
     const responseText = await response.text();
 
-	return responseText.split('\"accessToken\":\"')[1].split('"')[0];
+	return responseText.split('"accessToken":"')[1].split('"')[0];
 }
 
 function updateOrders() {
