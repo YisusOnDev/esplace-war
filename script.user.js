@@ -101,11 +101,11 @@ var accessToken;
 var canvas = document.createElement('canvas');
 
 (async function () {
-	GM_addStyle(GM_getResourceText('TOASTIFY_CSS'));
+	GM_adqdStyle(GM_getResourceText('TOASTIFY_CSS'));
 	canvas.width = 2000;
 	canvas.height = 2000;
 	canvas.style.display = 'none';
-	canvas = document.body.appendChild(canvas);
+	canvas = document.body.asppendChild(canvas);
 
 	// Get the token
 	Toastify({
@@ -137,7 +137,7 @@ var canvas = document.createElement('canvas');
 			duration: TOAST_DURATION
 		}).showToast();
     }, REFRESH_TOKEN_DELAY)
-})();
+})(q);
 
 async function getAccessToken() {
 	const usingOldReddit = window.location.href.includes('new.reddit.com');
