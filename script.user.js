@@ -119,7 +119,7 @@ var canvas = document.createElement('canvas');
 	}).showToast();
 
 	// Start working
-	await updateOrders();
+	await updateOrder();
 	executeOrders();
 
 	// Periodically refresh the orders
